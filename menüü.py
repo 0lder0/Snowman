@@ -7,6 +7,14 @@ tekst = BeautifulSoup(sisu, 'html.parser')
 fail = tekst.find_all('h2')
 
 lug = 0
+pealkirjad = []
+something = tekst.find_all('strong')
+
+for asi in something:
+    sõna = str(asi).strip('[<strong>')
+    sõne = sõna.strip('</strong>')
+    pealkirjad.append(sõne)
+
 for a in fail:
     lug += 1
 #lugerist läheb 1 maha, kuna see arvestab ka koolilõunatoetuse lehe all
@@ -23,3 +31,4 @@ for luger in range(luger):
     except:
         print('Lisainfo puudub')
         print('Hind: ' + tags.span.string + '\n')
+    
