@@ -60,6 +60,7 @@ for luger in range(luger):
     # lisame sõnastiku järjendisse
     json_list.append(json_dict)
 
+# leiame elementide ala igas toitude kategoorias
 for i in range(5):
     things = thing[i]
     luger1 = 0
@@ -68,11 +69,12 @@ for i in range(5):
         luger1 += 1
     indeks += 1
     if indeks == 5:
+        # joogid on kahes osas ja need tuleb kokku liita
         elementide_arv[-1] = elementide_arv[-1] + luger1
     else:
         elementide_arv.append(luger1)
     
-xx = []
+# vormistame jsoni faili
 for i in range(len(pealkirjad)):
     food_dict = {'nimetus': pealkirjad[i], 'toidud': []}
     for x in elementide_arv:
@@ -83,6 +85,7 @@ for i in range(len(pealkirjad)):
         break
     final_list.append(food_dict)
 
+# kirjutame andmed faili
 print(final_list)
 with open('json_fail.py', 'w') as j_fail:
     json.dump(final_list, j_fail, indent = 4)
